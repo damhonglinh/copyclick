@@ -14,7 +14,7 @@ View.ListDetail.Main = React.createClass
 
   render: ->
     R.article
-      className: 'list-detail-page'
+      className: 'list-detail'
       style: Styles.ListDetail.Page
       @_renderPageHeader()
       @_renderAddItemBtn()
@@ -32,16 +32,8 @@ View.ListDetail.Main = React.createClass
       '+'
 
   _renderBody: ->
-    R.section
-      className: 'list-detail-page__body clearfix'
-      @_renderItems()
-
-  _renderItems: ->
-    _.map @state.items, (item, index) ->
-      React.createElement View.Item,
-        keyIndex: index
-        key: index
-        item: item
+    React.createElement View.ListDetail.ItemsContainer,
+      items: @state.items
 
   _renderNotification: ->
     React.createElement View.Notification,
