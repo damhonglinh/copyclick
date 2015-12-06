@@ -41,19 +41,12 @@ View.ListDetail.Main = React.createClass
       type: @state.type
 
   _setupClipboard: ->
-    count = 0
-
     clipboard = new Clipboard '.item',
       text: (trigger) ->
         $(trigger).find('.item__content').text()
 
     clipboard.on 'success', (event) =>
-      count++
-      isEvent = count % 2 == 0
-      if isEvent
-        @_displayCopiedSuccessMessage()
-      else
-        @_displayCopiedFailedMessage()
+      @_displayCopiedSuccessMessage()
 
     clipboard.on 'error', (event) =>
       @_displayCopiedFailedMessage()
