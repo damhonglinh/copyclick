@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml'
 gem 'react-rails', '~> 1.4.2'
 gem "browserify-rails"
-
+gem 'active_model_serializers'
 
 
 group :development, :test do

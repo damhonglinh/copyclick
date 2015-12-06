@@ -5,8 +5,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
-    @items = list.items
+    @data = {
+      data: ListServices::ListJsonBuilder.build(params.permit(:id))
+    }
   end
 
   def create
