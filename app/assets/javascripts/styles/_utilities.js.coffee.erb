@@ -1,13 +1,11 @@
 primaryColor = '#00bdb3'
+textColor = '#212121'
 
 Styles.Utils ||=
   fontSize: 14
-  lineHeight: '18px'
+  textColor: textColor
   primaryColor: primaryColor
   primaryColorLight: '#4dcec7'
-  borderColor: '#e0e0e0'
-  backgroundColor: '#f4f4f4'
-  backgroundActiveColor: '#fffbea'
   borderStyle: "1px solid #e0e0e0"
   borderBoxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
 
@@ -24,11 +22,6 @@ Styles.Utils ||=
     ':focus':
       borderColor: primaryColor
       outline: 0
-
-  disabledComponent:
-    backgroundColor: '#e0e0e0'
-    pointerEvents: 'none'
-    color: '#ffffff'
 
   spriteImageSource: (position) ->
     spriteUrl = "<%= asset_url('assets-sprite.png') %>"

@@ -1,0 +1,20 @@
+$primaryColor: #00bdb3;
+$primaryColorLight: #4dcec7;
+$textColor: #212121;
+$fontSize: 14px;
+
+html body {
+  color: $textColor;
+  font-size: $fontSize;
+  font-family: 'Roboto', sans-serif;
+
+  margin: 0;
+}
+
+html a {
+  color: $primaryColor;
+
+  &:hover, &:active {
+    color: $primaryColor;
+  }
+}
