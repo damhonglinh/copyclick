@@ -20,6 +20,7 @@ View.ListDetail.Main = React.createClass
       @_renderAddItemBtn()
       @_renderBody()
       @_renderNotification()
+      @_renderItemForm() unless $.isEmptyObject(@state.editingItem)
 
   _renderPageHeader: ->
     React.createElement View.Common.PageHeader,
@@ -62,3 +63,7 @@ View.ListDetail.Main = React.createClass
     @setState
       message: 'Cannot copy. Please press Ctrl + C to copy!'
       type: 'fail'
+
+  _renderItemForm: ->
+    React.createElement View.ItemForm,
+      item: @state.editingItem
