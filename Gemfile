@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.0'
 
 
 gem 'haml'
-gem 'react-rails', '~> 1.2.0'
+gem 'react-rails', '~> 1.4.2'
 gem "browserify-rails"
 
 

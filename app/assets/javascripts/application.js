@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require underscore
+//= require underscore.string
+//= require node_modules
+//= require react_ujs
+//= require fluxerator
 //= require_tree .

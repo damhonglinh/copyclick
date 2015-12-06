@@ -1,0 +1,35 @@
+primaryColor = '#00bdb3'
+
+Styles.Utils ||=
+  fontSize: 14
+  lineHeight: '18px'
+  primaryColor: primaryColor
+  primaryColorLight: '#4dcec7'
+  borderColor: '#e0e0e0'
+  backgroundColor: '#f4f4f4'
+  backgroundActiveColor: '#fffbea'
+  borderStyle: "1px solid #e0e0e0"
+  borderBoxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+
+  verticalAlignForContainer:
+    display: 'flex'
+    alignItems: 'center'
+
+  verticalAlignChildren:
+    position: 'absolute'
+    top: '50%'
+    transform: 'translateY(-50%)'
+
+  focusBorder:
+    ':focus':
+      borderColor: primaryColor
+      outline: 0
+
+  disabledComponent:
+    backgroundColor: '#e0e0e0'
+    pointerEvents: 'none'
+    color: '#ffffff'
+
+  spriteImageSource: (position) ->
+    spriteUrl = "<%= asset_url('assets-sprite.png') %>"
+    "url('#{spriteUrl}') #{position} no-repeat"

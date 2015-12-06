@@ -1,0 +1,2 @@
+Styles.Lists =
+  Page: {}
