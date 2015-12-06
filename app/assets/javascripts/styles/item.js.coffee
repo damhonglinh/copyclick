@@ -1,6 +1,8 @@
 itemMaxHeight = 300
+itemContentMargin = 30
 
 Styles.Item =
+
   Main:
     width: '100%'
     maxHeight: itemMaxHeight
@@ -12,6 +14,6 @@ Styles.Item =
 
   Content:
     lineHeight: 1.4
-    maxHeight: itemMaxHeight - 30
-    margin: 15
+    maxHeight: itemMaxHeight - itemContentMargin * 2
+    margin: itemContentMargin
     overflow: 'hidden'
