@@ -10,6 +10,9 @@ View.ItemForm = Radium React.createClass
     itemContent: @props.item.content
     isShowing: @props.isShowing
 
+  componentWillReceiveProps: (newProps) ->
+    @setState(itemId: newProps.item.id, itemContent: newProps.item.content, isShowing: newProps.isShowing)
+
   render: ->
     R.article
       className: 'item-form-wrapper'

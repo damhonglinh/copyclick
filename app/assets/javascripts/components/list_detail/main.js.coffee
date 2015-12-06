@@ -5,6 +5,8 @@ View.ListDetail.Main = React.createClass
   getInitialState: ->
     list: @props.data.list
     items: @props.data.items
+    editingItem: {}
+    displayItemForm: false
     clipboard: @_setupClipboard()
     message: ''
     type: ''
@@ -67,3 +69,4 @@ View.ListDetail.Main = React.createClass
   _renderItemForm: ->
     React.createElement View.ItemForm,
       item: @state.editingItem
+      isShowing: @state.displayItemForm
