@@ -1,9 +1,10 @@
 itemMaxHeight = 300
-itemContentMargin = 25
+itemContentMargin = 35
 
 Styles.Item =
 
   Main: $.extend {}, Styles.Utils.materialPaper,
+    position: 'relative'
     margin: '25px 0'
     overflow: 'hidden'
     cursor: 'pointer'
@@ -15,3 +16,8 @@ Styles.Item =
     maxHeight: itemMaxHeight - itemContentMargin * 2
     margin: itemContentMargin
     overflow: 'hidden'
+
+  BtnWrapper:
+    position: 'absolute'
+    bottom: 3
+    right: 3
