@@ -1,4 +1,6 @@
 View.Common.PageHeader = React.createClass
+  displayName: 'PageHeader'
+
   getDefaultProps: ->
     title: ''
     onTitleTouchTap: $.noop

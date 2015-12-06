@@ -12,7 +12,7 @@ View.ListDetail.Main = React.createClass
       style: Styles.ListDetail.Page
       @_renderPageHeader()
       @_renderAddItemBtn()
-      @_renderItems()
+      @_renderBody()
 
   _renderPageHeader: ->
     React.createElement View.Common.PageHeader,
@@ -23,6 +23,11 @@ View.ListDetail.Main = React.createClass
       style: Styles.FloatingAddBtn
       iconStyle: Styles.FloatingAddBtnIcon
       '+'
+
+  _renderBody: ->
+    R.section
+      className: 'list-detail-page__body clearfix'
+      @_renderItems()
 
   _renderItems: ->
     _.map @state.items, (item, index) ->
