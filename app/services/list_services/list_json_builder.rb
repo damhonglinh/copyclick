@@ -6,8 +6,8 @@ module ListServices
     end
 
     def build
-      { list: build_list_json,
-        item: build_items_of_list_json }
+      { list:  build_list_json,
+        items: build_items_of_list_json }
     end
 
     def self.build(options = {})
