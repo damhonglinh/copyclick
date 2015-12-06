@@ -16,6 +16,7 @@ View.ItemForm = Radium React.createClass
   render: ->
     R.article
       className: 'item-form-wrapper'
+      ref: 'ItemFormWrapper'
       style: [Styles.ItemForm.Wrapper, !@state.isShowing && display: 'none']
       onClick: @_onClickWrapper
       @_renderFormContent()
@@ -51,10 +52,11 @@ View.ItemForm = Radium React.createClass
     @setState(itemContent: event.target.value)
 
   _saveChange: (event) ->
+    ReactAction.ListDetailAction.createOrUpdateItem(id: @state.itemId, content: @state.itemContent)
     @_hideForm()
 
   _onClickWrapper: (event) ->
-    @_hideForm() unless @refs['ItemFormMain'] == event.target
+    @_hideForm() if event.target == @refs['ItemFormWrapper']
 
   _hideForm: ->
-    console.log('hideform')
+    ReactAction.ListDetailAction.hideForm()

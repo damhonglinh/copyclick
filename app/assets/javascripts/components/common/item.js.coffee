@@ -41,6 +41,6 @@ View.Item = React.createClass
     event.preventDefault()
 
   _handleClickingEditBtn: (event) ->
-    event.preventDefault()
+    ReactAction.ListDetailAction.showItemFormFor(@state.item)
 
 View.Item = Radium(View.Item)

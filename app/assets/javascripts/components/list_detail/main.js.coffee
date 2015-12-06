@@ -3,13 +3,16 @@ View.ListDetail.Main = React.createClass
     data: {}
 
   getInitialState: ->
+    clipboard: @_setupClipboard()
     list: @props.data.list
     items: @props.data.items
     editingItem: {}
     displayItemForm: false
-    clipboard: @_setupClipboard()
     message: ''
     type: ''
+
+  componentWillMount: ->
+    ReactStore.ListDetailStore.initialize(@state, @_onStoreDataChanged)
 
   componentWillUnmount: ->
     @state.clipboard.destroy()
@@ -32,6 +35,7 @@ View.ListDetail.Main = React.createClass
     React.createElement FloatingActionButton,
       style: Styles.FloatingAddBtn
       iconStyle: Styles.FloatingAddBtnIcon
+      onTouchTap: @_handleClickAddItemBtn
       '+'
 
   _renderBody: ->
@@ -70,3 +74,9 @@ View.ListDetail.Main = React.createClass
     React.createElement View.ItemForm,
       item: @state.editingItem
       isShowing: @state.displayItemForm
+
+  _onStoreDataChanged: ->
+    @setState(ReactStore.ListDetailStore.getAllData())
+
+  _handleClickAddItemBtn: (event) ->
+    ReactAction.ListDetailAction.showItemFormFor({})
