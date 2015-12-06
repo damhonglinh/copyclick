@@ -1,13 +1,13 @@
 class AddListAndItemTables < ActiveRecord::Migration
   def change
     create_table :lists do |t|
-      t.integer :title
+      t.text :title
 
       t.timestamps
     end
 
     create_table :items do |t|
-      t.integer :content
+      t.text :content
       t.integer :position
 
       t.timestamps
