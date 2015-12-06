@@ -4,6 +4,7 @@ View.Item = React.createClass
   getDefaultProps: ->
     style: {}
     item: {}
+    keyIndex: 0
 
   getInitialState: ->
     item: @props.item

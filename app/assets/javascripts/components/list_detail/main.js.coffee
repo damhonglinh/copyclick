@@ -5,6 +5,12 @@ View.ListDetail.Main = React.createClass
   getInitialState: ->
     list: @props.data.list
     items: @props.data.items
+    clipboard: @_setupClipboard()
+    message: ''
+    type: ''
+
+  componentWillUnmount: ->
+    @state.clipboard.destroy()
 
   render: ->
     R.article
@@ -13,6 +19,7 @@ View.ListDetail.Main = React.createClass
       @_renderPageHeader()
       @_renderAddItemBtn()
       @_renderBody()
+      @_renderNotification()
 
   _renderPageHeader: ->
     React.createElement View.Common.PageHeader,
@@ -35,3 +42,31 @@ View.ListDetail.Main = React.createClass
         keyIndex: index
         key: index
         item: item
+
+  _renderNotification: ->
+    React.createElement View.Notification,
+      message: @state.message
+      type: @state.type
+
+  _setupClipboard: ->
+    clipboard = new Clipboard '.item',
+      text: (trigger) ->
+        $(trigger).find('.item__content').text()
+
+    clipboard.on 'success', (event) =>
+      @_displayCopiedSuccessMessage()
+
+    clipboard.on 'error', (event) =>
+      @_displayCopiedFailedMessage()
+
+    clipboard
+
+  _displayCopiedSuccessMessage: ->
+    @setState
+      message: 'Copied successfully!'
+      type: 'success'
+
+  _displayCopiedFailedMessage: ->
+    @setState
+      message: 'Cannot copy. Please press Ctrl + C to copy!'
+      type: 'fail'
