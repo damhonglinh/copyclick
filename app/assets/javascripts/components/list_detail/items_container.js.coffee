@@ -1,7 +1,7 @@
 View.ListDetail.ItemsContainer = Radium React.createClass
   getDefaultProps: ->
     items: {}
-    numberOfColumns: 2
+    numberOfColumns: 3
 
   getInitialState: ->
     items: @props.items
@@ -14,16 +14,7 @@ View.ListDetail.ItemsContainer = Radium React.createClass
     R.section
       className: 'list-detail__body clearfix'
       style: Styles.ListDetail.Body
-      @_renderMiddleDividers()
       @_renderItemColumns()
-
-  _renderMiddleDividers: ->
-    numberOfDividersNeeded = @state.numberOfColumns - 1
-    _(numberOfDividersNeeded).times (index) =>
-      R.div
-        className: 'list-detail__middle-divider'
-        style: @_dividerStyle(index, numberOfDividersNeeded)
-        key: index
 
   _renderItemColumns: ->
     columnsOfItems = @_prepareItemsInColumns(@state.items, @state.numberOfColumns)
@@ -51,11 +42,6 @@ View.ListDetail.ItemsContainer = Radium React.createClass
       returnedList[columnIndex].push(item)
       returnedList
     , {})
-
-  _dividerStyle: (index, totalDividers) ->
-    leftPosition = (100 / (totalDividers + 1)) * (index + 1)
-    leftStyle = left: "#{leftPosition}%"
-    [ Styles.ListDetail.MiddleDivider, leftStyle ]
 
   _columnStyle: ->
     widthStyle = width: "#{100 / @state.numberOfColumns}%"

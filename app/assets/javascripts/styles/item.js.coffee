@@ -1,13 +1,11 @@
 itemMaxHeight = 300
-itemContentMargin = 30
+itemContentMargin = 25
 
 Styles.Item =
 
-  Main:
-    width: '100%'
-    maxHeight: itemMaxHeight
+  Main: $.extend {}, Styles.Utils.materialPaper,
+    margin: '25px 0'
     overflow: 'hidden'
-    borderBottom: Styles.Utils.borderStyle
     cursor: 'pointer'
     ':hover':
       backgroundColor: Styles.Utils.backgroundColorLight
