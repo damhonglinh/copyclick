@@ -1,2 +1,0 @@
-# copydo
-Click to copy
