@@ -25,7 +25,7 @@ View.ListDetail.Main = React.createClass
       @_renderAddItemBtn()
       @_renderBody()
       @_renderNotification()
-      @_renderItemForm() unless $.isEmptyObject(@state.editingItem)
+      @_renderItemForm() if @state.displayItemForm
 
   _renderPageHeader: ->
     React.createElement View.Common.PageHeader,
@@ -73,7 +73,6 @@ View.ListDetail.Main = React.createClass
   _renderItemForm: ->
     React.createElement View.ItemForm,
       item: @state.editingItem
-      isShowing: @state.displayItemForm
 
   _onStoreDataChanged: ->
     @setState(ReactStore.ListDetailStore.getAllData())

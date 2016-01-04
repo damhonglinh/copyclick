@@ -3,15 +3,16 @@ View.ItemForm = Radium React.createClass
 
   getDefaultProps: ->
     item: {}
-    isShowing: true
 
   getInitialState: ->
     itemId: @props.item.id
     itemContent: @props.item.content
-    isShowing: @props.isShowing
 
   componentWillReceiveProps: (newProps) ->
-    @setState(itemId: newProps.item.id, itemContent: newProps.item.content, isShowing: newProps.isShowing)
+    @setState(itemId: newProps.item.id, itemContent: newProps.item.content)
+
+  componentDidMount: ->
+    @refs.ItemContentInput.focus()
 
   render: ->
     R.article
@@ -34,6 +35,7 @@ View.ItemForm = Radium React.createClass
 
   _renderContentInput: ->
     React.createElement TextField,
+      ref: 'ItemContentInput'
       style: Styles.ItemForm.ContentField
       floatingLabelStyle: color: Styles.Utils.primaryColor
       underlineFocusStyle: borderColor: Styles.Utils.primaryColor
