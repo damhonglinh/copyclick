@@ -15,19 +15,22 @@ View.ItemForm = Radium React.createClass
 
   render: ->
     R.article
-      className: 'item-form-wrapper'
-      ref: 'ItemFormWrapper'
-      style: [Styles.ItemForm.Wrapper, !@state.isShowing && display: 'none']
+      className: 'item-form-container'
+      ref: 'ItemFormContainer'
+      style: Styles.ItemForm.Container
       onClick: @_onClickWrapper
       @_renderFormContent()
 
   _renderFormContent: ->
-    R.section
-      ref: 'ItemFormMain'
-      className: 'item-form'
-      style: Styles.ItemForm.Main
-      @_renderContentInput()
-      @_renderSaveChangeBtn()
+    R.div
+      className: 'item-form-wrapper'
+      style: Styles.ItemForm.Wrapper
+      R.section
+        ref: 'ItemFormMain'
+        className: 'item-form'
+        style: Styles.ItemForm.Main
+        @_renderContentInput()
+        @_renderSaveChangeBtn()
 
   _renderContentInput: ->
     React.createElement TextField,
@@ -36,7 +39,7 @@ View.ItemForm = Radium React.createClass
       underlineFocusStyle: borderColor: Styles.Utils.primaryColor
       fullWidth: true
       multiLine: true
-      rowsMax: 7
+      rowsMax: 15
       floatingLabelText: 'Content'
       value: @state.itemContent
       onChange: @_handleContentChange
@@ -56,7 +59,7 @@ View.ItemForm = Radium React.createClass
     @_hideForm()
 
   _onClickWrapper: (event) ->
-    @_hideForm() if event.target == @refs['ItemFormWrapper']
+    @_hideForm() if event.target == @refs['ItemFormContainer']
 
   _hideForm: ->
     ReactAction.ListDetailAction.hideForm()

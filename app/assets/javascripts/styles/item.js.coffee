@@ -1,5 +1,5 @@
 itemMaxHeight = 300
-itemContentMargin = 35
+itemContentMargin = 25
 
 Styles.Item =
 
