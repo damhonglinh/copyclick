@@ -5,13 +5,10 @@ class ListsController < ApplicationController
   end
 
   def show
+    list = ListServices::FirstOrCreateByHandle.new(handle: params[:id]).find_or_create
     @data = {
-      data: ListServices::ListJsonBuilder.build(params.permit(:id))
+      data: ListServices::ListJsonBuilder.build(list: list)
     }
-  end
-
-  def create
-    respond_to_create_or_update
   end
 
   def update

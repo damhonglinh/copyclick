@@ -2,7 +2,7 @@ module ListServices
   class ListJsonBuilder
 
     def initialize(options = {})
-      @list = List.find_by_id(options[:id])
+      @list = options[:list]
     end
 
     def build

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  resources :lists, path: '/', only: [:index, :show, :create, :update]
+  resources :lists, path: '/', only: [:index, :show, :update]
 
   resources :items, only: [:create, :update] do
     collection do
