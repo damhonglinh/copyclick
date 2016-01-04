@@ -1,10 +1,14 @@
-class ListsController < ApplicationController
+class ItemsController < ApplicationController
 
   def create
     respond_to_create_or_update
   end
 
   def update
+    respond_to_create_or_update
+  end
+
+  def create_or_update
     respond_to_create_or_update
   end
 
@@ -15,9 +19,10 @@ class ListsController < ApplicationController
       format.json do
         item = Item.find_by_id(params[:id]) || Item.new
         if item.update(item_params)
-          render status: :ok
+          render json: { item: Hash(ItemSerializer.new(item).serializable_hash) },
+                 status: :ok
         else
-          render status: :unprocessable_entity
+          render nothing: true, status: :unprocessable_entity
         end
       end
     end

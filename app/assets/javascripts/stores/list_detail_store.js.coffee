@@ -17,9 +17,7 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
     @emitChange()
 
   createOrUpdateItem: ({ id, content }) ->
-    item = @._findItemById(id) || @_createNewItem(content)
-    item.content = content
-    @emitChange()
+    @_createOrUpdateItemOnServer(id, content)
 
   hideForm: ->
     displayItemForm = false
@@ -34,12 +32,28 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
 
   #private
 
-  _createNewItem: (content) ->
-    item =
-      id: -1
-      content: content
-    items.push(item)
-    item
+  AJAX_PARAMS =
+    url: '/items/create_or_update'
+    contentType: 'application/json'
+    method: 'POST'
+    dataType: 'json'
+
+  _createOrUpdateItemOnServer: (id, content) ->
+    $.ajax $.extend {}, AJAX_PARAMS,
+      data: JSON.stringify
+        id: id
+        list_id: list.id
+        content: content
+      success: (response) =>
+        @_createNewItemOnServerSuccessCallback(response)
+
+  _createNewItemOnServerSuccessCallback: (response) ->
+    item = response.item
+    if existingItem = @_findItemById(item.id)
+      existingItem.content = item.content
+    else
+      items.push(item)
+    @emitChange()
 
   _findItemById: (itemId) ->
     _.find items, (item) ->

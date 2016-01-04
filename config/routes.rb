@@ -7,5 +7,10 @@ Rails.application.routes.draw do
 
   resources :lists, path: '/', only: [:index, :show, :create, :update]
 
-  resources :items, only: [:create, :update]
+  resources :items, only: [:create, :update] do
+    collection do
+      post 'create_or_update'
+    end
+  end
+
 end
