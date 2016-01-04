@@ -23,6 +23,12 @@ html a {
   }
 }
 
+.react-page-placeholder {
+  position: relative;
+}
+
+
+
 .clearfix {
   &:before,
   &:after {
@@ -32,4 +38,8 @@ html a {
   &:after {
     clear: both;
   }
+}
+
+.no-scroll {
+  overflow: hidden;
 }

@@ -13,6 +13,10 @@ View.ItemForm = Radium React.createClass
 
   componentDidMount: ->
     @refs.ItemContentInput.focus()
+    $('body').addClass('no-scroll')
+
+  componentWillUnmount: ->
+    $('body').removeClass('no-scroll')
 
   render: ->
     R.article
@@ -42,7 +46,7 @@ View.ItemForm = Radium React.createClass
       fullWidth: true
       multiLine: true
       rowsMax: 15
-      floatingLabelText: 'Content'
+      floatingLabelText: 'Just type anything'
       value: @state.itemContent
       onChange: @_handleContentChange
 
@@ -50,7 +54,7 @@ View.ItemForm = Radium React.createClass
     React.createElement RaisedButton,
       primary: true
       style: Styles.ItemForm.SaveBtn
-      label: 'Save'
+      label: 'Done'
       onTouchTap: @_saveChange
 
   _handleContentChange: (event) ->

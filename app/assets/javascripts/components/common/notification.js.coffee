@@ -2,7 +2,7 @@ View.Notification = React.createClass
   getDefaultProps: ->
     message: ''
     type: ''
-    duration: 3000
+    duration: 1500
 
   getInitialState: ->
     message: @props.message

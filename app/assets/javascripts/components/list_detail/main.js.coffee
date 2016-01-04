@@ -62,12 +62,12 @@ View.ListDetail.Main = React.createClass
 
   _displayCopiedSuccessMessage: ->
     @setState
-      message: 'Copied successfully!'
+      message: 'Copied!'
       type: 'success'
 
   _displayCopiedFailedMessage: ->
     @setState
-      message: 'Cannot copy. Please press Ctrl + C to copy!'
+      message: 'Cannot copy with Safari. Please press Ctrl + C to copy!'
       type: 'fail'
 
   _renderItemForm: ->

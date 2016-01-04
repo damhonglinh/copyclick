@@ -4,11 +4,11 @@ itemContentMargin = 35
 Styles.ItemForm =
 
   Container:
-    position: 'absolute'
+    position: 'fixed'
     top: 0
     left: 0
-    height: '100vh'
-    width: '100vw'
+    bottom: 0
+    right: 0
     backgroundColor: 'rgba(51, 51, 51, 0.5)'
     textAlign: 'center'
 
