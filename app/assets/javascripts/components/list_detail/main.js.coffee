@@ -41,6 +41,7 @@ View.ListDetail.Main = React.createClass
   _renderBody: ->
     React.createElement View.ListDetail.ItemsContainer,
       items: @state.items
+      numberOfColumns: @_getNumberOfColumnsToDisplay()
 
   _renderNotification: ->
     React.createElement View.Notification,
@@ -79,3 +80,12 @@ View.ListDetail.Main = React.createClass
 
   _handleClickAddItemBtn: (event) ->
     ReactAction.ListDetailAction.showItemFormFor({})
+
+  _getNumberOfColumnsToDisplay: ->
+    width = $(window).width()
+    if width <= 414
+      1
+    else if width < 600
+      2
+    else
+      3
