@@ -1,7 +1,10 @@
 class ListsController < ApplicationController
+  http_basic_authenticate_with name: 'linh', password: 'chi', only: :index
+
 
   def index
-   @lists = List.all
+    recent_lists = List.order(updated_at: :desc).first(100)
+    @lists = recent_lists.map{ |list| Hash(ListSerializer.new(list).serializable_hash) }
   end
 
   def show
@@ -22,9 +25,10 @@ class ListsController < ApplicationController
       format.json do
         list = List.find_by_id(params[:id]) || List.new
         if list.update(list_params)
-          render status: :ok
+          render json: { list: Hash(ListSerializer.new(list).serializable_hash) },
+                 status: :ok
         else
-          render status: :unprocessable_entity
+          render nothing: true, status: :unprocessable_entity
         end
       end
     end
