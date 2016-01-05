@@ -38,3 +38,12 @@ Styles.Utils ||=
   spriteImageSource: (position) ->
     spriteUrl = "<%= asset_url('assets-sprite.png') %>"
     "url('#{spriteUrl}') #{position} no-repeat"
+
+  getNumberOfColumnsToDisplay: ->
+    width = $(window).width()
+    if width <= 414
+      1
+    else if width < 600
+      2
+    else
+      3
