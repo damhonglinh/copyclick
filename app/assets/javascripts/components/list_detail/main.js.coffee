@@ -20,7 +20,7 @@ View.ListDetail.Main = React.createClass
       @_renderPageHeader()
       @_renderAddItemBtn()
       @_renderBody()
-      @_renderNotification()
+      @_renderNotification() if @state.message
       @_renderItemForm() if @state.displayItemForm
 
   _renderPageHeader: ->

@@ -26,6 +26,10 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
     editingItem = {}
     @emitChange()
 
+  displayNotification: (messageOptions) ->
+    message = messageOptions.message
+    type    = messageOptions.type
+    @emitChange()
 
   copyItemContent: ({ itemContentDOM }) ->
     if @_copyItemContentToClipboard(itemContentDOM)
