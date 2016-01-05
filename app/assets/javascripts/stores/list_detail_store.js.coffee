@@ -2,6 +2,8 @@ list = {}
 items = []
 editingItem = {}
 displayItemForm = false
+message = ''
+type = ''
 
 ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
   initialize: _.once (data, callback = $.noop) ->
@@ -24,11 +26,23 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
     editingItem = {}
     @emitChange()
 
+
+  copyItemContent: ({ itemContentDOM }) ->
+    if @_copyItemContentToClipboard(itemContentDOM)
+      message = 'Copied!'
+      type = 'success'
+    else
+      message = 'Cannot copy with Safari. Please press Ctrl + C to copy!'
+      type = 'fail'
+    @emitChange()
+
   getAllData: ->
     list: list
     items: items
     editingItem: editingItem
     displayItemForm: displayItemForm
+    message: message
+    type: type
 
   #private
 
@@ -58,3 +72,16 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
   _findItemById: (itemId) ->
     _.find items, (item) ->
       item.id == itemId
+
+  _copyItemContentToClipboard: (itemContentDOM) ->
+    try
+      selection = window.getSelection()
+      range = document.createRange()
+      range.selectNodeContents(itemContentDOM)
+      selection.removeAllRanges()
+      selection.addRange(range)
+      didCopySuccess = document.execCommand('copy')
+      selection.removeAllRanges()
+      didCopySuccess
+    catch error
+      return false

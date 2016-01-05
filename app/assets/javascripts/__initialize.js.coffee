@@ -13,6 +13,8 @@ window.Styles ||= {}
 injectTapEventPlugin()
 
 Actions = [
+  'copyItemContent'
+  'displayNotification'
   'showItemFormFor'
   'createOrUpdateItem'
   'hideForm'

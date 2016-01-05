@@ -13,6 +13,7 @@ View.Item = React.createClass
     R.section
       className: 'item'
       style: Styles.Item.Main
+      onClick: @_handleClickingItem
       @_renderItemContent()
       @_renderBtnWrapper()
 
@@ -33,14 +34,19 @@ View.Item = React.createClass
 
   _renderItemContent: ->
     R.div
+      ref: 'ItemContent'
       className: 'item__content'
       style: Styles.Item.Content
       @state.item.content
 
+  _handleClickingItem: (event) ->
+    ReactAction.ListDetailAction.copyItemContent(itemContentDOM: @refs.ItemContent)
+
   _handleClickingDeleteBtn: (event) ->
-    event.preventDefault()
+    event.stopPropagation()
 
   _handleClickingEditBtn: (event) ->
+    event.stopPropagation()
     ReactAction.ListDetailAction.showItemFormFor(@state.item)
 
 View.Item = Radium(View.Item)

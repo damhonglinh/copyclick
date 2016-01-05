@@ -3,7 +3,6 @@ View.ListDetail.Main = React.createClass
     data: {}
 
   getInitialState: ->
-    clipboard: @_setupClipboard()
     list: @props.data.list
     items: @props.data.items
     editingItem: {}
@@ -13,9 +12,6 @@ View.ListDetail.Main = React.createClass
 
   componentWillMount: ->
     ReactStore.ListDetailStore.initialize(@state, @_onStoreDataChanged)
-
-  componentWillUnmount: ->
-    @state.clipboard.destroy()
 
   render: ->
     R.article
@@ -47,29 +43,6 @@ View.ListDetail.Main = React.createClass
     React.createElement View.Notification,
       message: @state.message
       type: @state.type
-
-  _setupClipboard: ->
-    clipboard = new Clipboard '.item',
-      text: (trigger) ->
-        $(trigger).find('.item__content').text()
-
-    clipboard.on 'success', (event) =>
-      @_displayCopiedSuccessMessage()
-
-    clipboard.on 'error', (event) =>
-      @_displayCopiedFailedMessage()
-
-    clipboard
-
-  _displayCopiedSuccessMessage: ->
-    @setState
-      message: 'Copied!'
-      type: 'success'
-
-  _displayCopiedFailedMessage: ->
-    @setState
-      message: 'Cannot copy with Safari. Please press Ctrl + C to copy!'
-      type: 'fail'
 
   _renderItemForm: ->
     React.createElement View.ItemForm,
