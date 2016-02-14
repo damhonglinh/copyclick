@@ -9,6 +9,9 @@ View.Item = React.createClass
   getInitialState: ->
     item: @props.item
 
+  componentWillReceiveProps: (newProps) ->
+    @setState(item: newProps.item)
+
   render: ->
     R.section
       className: 'item'

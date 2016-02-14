@@ -20,7 +20,7 @@ module ListServices
 
     def build_items_of_list_json
       return [] unless @list.present?
-      @list.items.map do |item|
+      @list.items.order(created_at: :desc).map do |item|
         Hash(ItemSerializer.new(item).serializable_hash)
       end
     end

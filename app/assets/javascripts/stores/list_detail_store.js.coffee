@@ -70,7 +70,7 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
     if existingItem = @_findItemById(item.id)
       existingItem.content = item.content
     else
-      items.push(item)
+      items.unshift(item)
     @emitChange()
 
   _findItemById: (itemId) ->
