@@ -15,6 +15,7 @@ View.Item = React.createClass
       style: Styles.Item.Main
       onClick: @_handleClickingItem
       @_renderItemContent()
+      @_renderTimestamp()
       @_renderBtnWrapper()
 
   _renderBtnWrapper: ->
@@ -38,6 +39,12 @@ View.Item = React.createClass
       className: 'item__content'
       style: Styles.Item.Content
       @state.item.content
+
+  _renderTimestamp: ->
+    R.span
+      className: 'item__timestamp'
+      style: Styles.Item.Timestamp
+      @state.item.created_at
 
   _handleClickingItem: (event) ->
     ReactAction.ListDetailAction.copyItemContent(itemContentDOM: @refs.ItemContent)

@@ -21,3 +21,10 @@ Styles.Item =
     position: 'absolute'
     bottom: 3
     right: 3
+
+  Timestamp:
+    position: 'absolute'
+    bottom: 7
+    left: 25
+    fontSize: 10
+    color: Styles.Utils.borderColor
