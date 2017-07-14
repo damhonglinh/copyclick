@@ -11,6 +11,8 @@ Styles.ItemForm =
     right: 0
     backgroundColor: 'rgba(51, 51, 51, 0.5)'
     textAlign: 'center'
+    WebkitTransform: 'translate3d(0,0,0)'
+
 
   Wrapper: $.extend {}, Styles.Utils.middleAlignChildren, Styles.Utils.materialPaper,
     backgroundColor: 'white'

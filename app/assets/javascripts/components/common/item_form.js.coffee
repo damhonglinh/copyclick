@@ -62,7 +62,9 @@ View.ItemForm = Radium React.createClass
 
   _saveChange: (event) ->
     ReactAction.ListDetailAction.createOrUpdateItem(id: @state.itemId, content: @state.itemContent)
-    @_hideForm()
+    setTimeout =>
+      @_hideForm()
+    , 50
 
   _onClickWrapper: (event) ->
     @_hideForm() if event.target == @refs['ItemFormContainer']
