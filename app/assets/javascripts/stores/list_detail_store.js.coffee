@@ -19,7 +19,7 @@ ReactStore.ListDetailStore = $.extend ReactStore.ListDetailStore,
     @emitChange()
 
   createOrUpdateItem: ({ id, content }) ->
-    @_createOrUpdateItemOnServer(id, content)
+    @_createOrUpdateItemOnServer(id, content) if content
 
   hideForm: ->
     displayItemForm = false

@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.json do
         item = Item.find_by_id(params[:id]) || Item.new
-        if item.update(item_params)
+        if item_params[:content].present? && item.update(item_params)
           render json: { item: Hash(ItemSerializer.new(item).serializable_hash) },
                  status: :ok
         else

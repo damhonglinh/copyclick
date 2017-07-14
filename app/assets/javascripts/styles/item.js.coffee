@@ -15,6 +15,7 @@ Styles.Item =
     lineHeight: 1.4
     maxHeight: itemMaxHeight - itemContentMargin * 2
     margin: itemContentMargin
+    minHeight: 1
     overflow: 'hidden'
 
   BtnWrapper:
