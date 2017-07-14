@@ -46,7 +46,8 @@ View.ItemForm = Radium React.createClass
       fullWidth: true
       multiLine: true
       rowsMax: 15
-      floatingLabelText: 'Just type anything'
+      floatingLabelStyle: Styles.ItemForm.Label
+      floatingLabelText: 'Type something'
       value: @state.itemContent
       onChange: @_handleContentChange
 

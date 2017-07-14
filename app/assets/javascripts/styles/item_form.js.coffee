@@ -16,12 +16,12 @@ Styles.ItemForm =
 
   Wrapper: $.extend {}, Styles.Utils.middleAlignChildren, Styles.Utils.materialPaper,
     backgroundColor: 'white'
-    padding: 30
+    padding: 16
     height: '70%'
     width: '70%'
     '@media (max-width: 600px)':
-      width: '85%'
-      padding: 20
+      width: '90%'
+      padding: 16
 
   Main:
     position: 'relative'
@@ -30,6 +30,9 @@ Styles.ItemForm =
 
   ContentField:
     textAlign: 'left'
+
+  Label:
+    fontSize: 13
 
   SaveBtn:
     position: 'absolute'
